@@ -1,3 +1,7 @@
+import axios from "axios";
+import { response } from "express";
+import Tabs from "Tabs";
+
 const Tabs = (topics) => {
   const topics1 = document.createElement('div');
   topics1.classList.add('topics');
@@ -27,6 +31,24 @@ const Tabs = (topics) => {
 }
 
 const tabsAppender = (selector) => {
+  const section = document.querySelector(selector);
+  axios.get(`http://localhost:5001/api/topics`).then((res) => {
+    const articles = res.data.topics;
+    const tabs = new Tabs(selector, topics);
+    tabs.render();
+  })
+
+  
+    /*axios.get(`http://localhost:5001/api/topics`).then((res) => {
+      const topics = res.data.topics;
+      const tabs = new Tabs(selector, topics);
+      tabs.render();
+    })
+    .catch(error => {
+      console.log(error);
+    });*/
+  
+
   // TASK 4
   // ---------------------
   // Implement this function which takes a css selector as its only argument.
