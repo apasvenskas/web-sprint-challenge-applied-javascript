@@ -20,15 +20,15 @@ const Header = (title, date, temp) => {
   date1.classList.add('date');
   temp1.classList.add('temp');
 
-  date1.textContent = "date";
-  title1.textContent = "tittle";
-  temp1.textContent = "temp";
+  date1.textContent = date;
+  title1.textContent = title;
+  temp1.textContent = temp;
 
   header2.appendChild(date1);
   header2.appendChild(title1);
   header2.appendChild(temp1);
 
-  return Header;
+  return header2;
 }
 
 const headerAppender = (selector) => {
@@ -45,15 +45,10 @@ const headerAppender = (selector) => {
   // so all that you need to do is pass it into the querySelector method
   // for the tests to work!
 
-  const Header = (selector) => {
-    const parent = document.querySelector(selector);
-  }
   
- /*const header = Header(title, date, temp);
-  const parent = document.querySelector(selector);
-  parent.appendChild(header); 
-*/
-return Header;
+const header = Header('title', 'date', 'temp');
+const parent = document.querySelector(selector);
+parent.appendChild(header);
 }
 
 export { Header, headerAppender }
