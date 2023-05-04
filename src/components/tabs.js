@@ -1,6 +1,5 @@
 import axios from "axios";
-import { response } from "express";
-import Tabs from "Tabs";
+
 
 const Tabs = (topics) => {
   const topics1 = document.createElement('div');
@@ -34,8 +33,8 @@ const tabsAppender = (selector) => {
   const section = document.querySelector(selector);
   axios.get(`http://localhost:5001/api/topics`).then((res) => {
     const articles = res.data.topics;
-    const tabs = new Tabs(selector, topics);
-    tabs.render();
+    const tabs = Tabs(articles);
+    section.appendChild(tabs);
   })
 
   
